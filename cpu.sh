@@ -23,7 +23,7 @@ if [ $(echo "$CPU_USAGE > $WARNING"|bc) -eq 1 ]
 then
         #发送钉钉
         webhook='https://oapi.dingtalk.com/robot/send?access_token='
-        cluster='121.196.10.124'
+        cluster=''
         curl $webhook -H 'Content-Type: application/json' -d "
     {
         'msgtype': 'text',
@@ -45,7 +45,7 @@ if [ $DF -gt $ALERT ]
 then
         #发送钉钉
         webhook='https://oapi.dingtalk.com/robot/send?access_token='
-        cluster='121.196.10.124'
+        cluster=''
         curl $webhook -H 'Content-Type: application/json' -d "
     {
         'msgtype': 'text',
@@ -77,7 +77,7 @@ if [ $(echo "$Percent_mem_used > $WARNING"|bc) -eq 1 ]
 then
         #发送钉钉
         webhook='https://oapi.dingtalk.com/robot/send?access_token='
-        cluster='121.196.10.124'
+        cluster=''
         curl $webhook -H 'Content-Type: application/json' -d "
     {
         'msgtype': 'text',
