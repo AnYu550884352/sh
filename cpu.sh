@@ -22,16 +22,13 @@ WARNING=85
 if [ $(echo "$CPU_USAGE > $WARNING"|bc) -eq 1 ]
 then
         #发送
-        webhook=''
-        cluster=''
-        curl $webhook -H 'Content-Type: application/json' -d "
+        webhook=""
+        cluster="正式服务器"
+        curl $webhook -H "Content-Type: application/json" -d "
     {
-        'msgtype': 'text',
-        'text': {
-            'content': '服务器名称：$cluster\nCPU报警信息：CPU超过百分之85，请注意\n'
-        },
-        'at': {
-            'isAtAll': true
+        "msgtype": "text",
+        "text": {
+            "content": "服务器名称：$cluster\nCPU报警信息：CPU超过百分之85，请注意\n"
         }
     }"
         echo "CPU Usage:${CPU_USAGE}%"$time >> /www/wwwroot/sh/cpu.log
@@ -44,16 +41,13 @@ DF=$(df | grep '/$'| awk '{print $(NF-1)}' | awk -F'%' '{print $1}')
 if [ $DF -gt $ALERT ]
 then
         #发送
-        webhook=''
-        cluster=''
-        curl $webhook -H 'Content-Type: application/json' -d "
+        webhook=""
+        cluster="正式服务器"
+        curl $webhook -H "Content-Type: application/json" -d "
     {
-        'msgtype': 'text',
-        'text': {
-            'content': '服务器名称：$cluster\nDF报警信息：DF超过百分之85，请及时清理\n'
-        },
-        'at': {
-            'isAtAll': true
+        "msgtype": "text",
+        "text": {
+            "content": "服务器名称：$cluster\nDF报警信息：DF超过百分之85，请及时清理\n"
         }
     }"
         echo "DF usage:${DF}%"$time >> /www/wwwroot/sh/df.log
@@ -76,16 +70,13 @@ Percent_mem_used=`echo "scale=2; $mem_used / $mem_total *100" | bc`
 if [ $(echo "$Percent_mem_used > $WARNING"|bc) -eq 1 ]
 then
         #发送
-        webhook=''
-        cluster=''
-        curl $webhook -H 'Content-Type: application/json' -d "
+        webhook=""
+        cluster="正式服务器"
+        curl $webhook -H "Content-Type: application/json" -d "
     {
-        'msgtype': 'text',
-        'text': {
-            'content': '服务器名称：$cluster\nFREE报警信息：REFF内存超过百分之85，请注意\n'
-        },
-        'at': {
-            'isAtAll': true
+        "msgtype": "text",
+        "text": {
+            "content": "服务器名称：$cluster\nFREE报警信息：REFF内存超过百分之85，请注意\n"
         }
     }"
         echo "FREE Usage:${Percent_mem_used}%"$time >> /www/wwwroot/sh/free.log
